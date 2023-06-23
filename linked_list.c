@@ -6,7 +6,7 @@
 /*   By: tairribe <tairribe@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/15 21:13:43 by tairribe          #+#    #+#             */
-/*   Updated: 2023/06/22 20:38:05 by tairribe         ###   ########.fr       */
+/*   Updated: 2023/06/22 23:20:10 by tairribe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,7 +97,7 @@ void	free_dcll(t_dcll *dcll)
 	free(dcll);
 }
 
-char	is_new_dcll(t_dcll *dcll, int nb)
+t_bool	is_new_dcll(t_dcll *dcll, int nb)
 {
 	t_node *tmp;
 	if (dcll->len == 0)
