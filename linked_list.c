@@ -6,14 +6,14 @@
 /*   By: tairribe <tairribe@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/15 21:13:43 by tairribe          #+#    #+#             */
-/*   Updated: 2023/06/22 00:43:12 by tairribe         ###   ########.fr       */
+/*   Updated: 2023/06/22 20:38:05 by tairribe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
 /* Doubly Circular Linked List struct*/
-void	new_node_back(int nb, t_dcll *dcll)
+void	new_node_back(t_dcll *dcll, int nb)
 {
 	t_node	*node;
 
@@ -36,7 +36,7 @@ void	new_node_back(int nb, t_dcll *dcll)
 	dcll->len++;
 }
 
-void	new_node_front(int nb, t_dcll *dcll)
+void	new_node_front(t_dcll *dcll, int nb)
 {
 	t_node	*node;
 
@@ -108,6 +108,7 @@ char	is_new_dcll(t_dcll *dcll, int nb)
 	{
 		if (tmp->cont.nb == nb)
 			return (0);
+		tmp = tmp->next;
 	}
 	if (tmp->cont.nb == nb)
 		return (0);

@@ -6,7 +6,7 @@
 /*   By: tairribe <tairribe@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/15 19:29:31 by tairribe          #+#    #+#             */
-/*   Updated: 2023/06/22 00:49:16 by tairribe         ###   ########.fr       */
+/*   Updated: 2023/06/22 21:32:31 by tairribe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,24 @@ void	error(t_dcll *dcll)
 	free_and_exit(dcll, 1);
 }
 
+void	parse_space(t_dcll *dcll, char *str)
+{
+	char	**words;
+	int		i;
+
+	words = ft_split(str, ' ');
+	i = 0;
+	while (words[i] != NULL)
+	{
+		if(ft_is_number(words[i]) == 1)
+			new_node_back(dcll, ft_atoi(words[i]));
+		else
+			error(dcll);
+		i++;
+	}
+	free_mt((void **) words);
+}
+
 int	main(int argc, char *argv[])
 {
 	int i;
@@ -37,18 +55,19 @@ int	main(int argc, char *argv[])
 	i = 1;
 	while(i < argc)
 	{
-		// if (ft_strchr(argv[i], ' '))
-		// 	parse_space(argv[i], )
-		// else ()
+		if (ft_strchr(argv[i], ' '))
+		{
+			parse_space(dcll, argv[i]);
+			i++;
+			continue;
+		}
 		if (ft_is_number(argv[i]) == 0)
 			error(dcll);
 		if (is_new_dcll(dcll, ft_atoi(argv[i])) == 1)
-			new_node_back(ft_atoi(argv[i]), dcll);
+			new_node_back(dcll, ft_atoi(argv[i]));
 		else
-		{
-			ft_printf("is new\n");
 			error(dcll);
-		}
+		i++;
 	}
 	print_dcll(dcll);
 	free_dcll(dcll);

@@ -6,7 +6,7 @@
 /*   By: tairribe <tairribe@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/28 19:49:13 by tairribe          #+#    #+#             */
-/*   Updated: 2023/06/22 00:29:33 by tairribe         ###   ########.fr       */
+/*   Updated: 2023/06/22 20:57:16 by tairribe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,10 +37,13 @@ typedef struct s_dcll
 }			t_dcll;
 
 // linked_list.c
-void	new_node_back(int nb, t_dcll *dcll);
-void	new_node_front(int nb, t_dcll *dcll);
+void	new_node_back(t_dcll *dcll, int nb);
+void	new_node_front(t_dcll *dcll, int nb);
 char	is_new_dcll(t_dcll *dcll, int nb);
 void	print_dcll(t_dcll *dcll);
 void	free_dcll(t_dcll *dcll);
+
+// utils.c
+int	free_mt(void **mt);
 
 #endif
