@@ -6,7 +6,7 @@
 /*   By: tairribe <tairribe@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/15 19:29:31 by tairribe          #+#    #+#             */
-/*   Updated: 2023/06/22 23:28:06 by tairribe         ###   ########.fr       */
+/*   Updated: 2023/06/22 23:56:35 by tairribe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,8 @@ void	parse_space(t_dcll *dcll, char *str)
 	while (words[i] != NULL)
 		add_number(dcll, words[i++]);
 	free_mt((void **) words);
+	if (i == 0)
+		error(dcll);
 }
 
 t_dcll	*parse_argv(int argc, char *argv[])
