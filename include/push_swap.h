@@ -6,7 +6,7 @@
 /*   By: tairribe <tairribe@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/28 19:49:13 by tairribe          #+#    #+#             */
-/*   Updated: 2023/06/22 23:21:34 by tairribe         ###   ########.fr       */
+/*   Updated: 2023/06/29 22:06:59 by tairribe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,12 @@
 
 typedef	struct	s_cont
 {
-	int	nb;
-}		t_cont;
+	int		nb;
+	int		index;
+	int		keep_a;
+	t_bool	keep_a_index;
+	t_bool	keep_a_gt;
+}			t_cont;
 
 typedef struct s_node
 {
@@ -43,7 +47,9 @@ void	new_node_back(t_dcll *dcll, int nb);
 void	new_node_front(t_dcll *dcll, int nb);
 void	print_dcll(t_dcll *dcll);
 void	free_dcll(t_dcll *dcll);
-
+// markup.c
+void	set_best_index_markup(t_dcll *list);
+int		set_index_markup(t_node *start);
 // utils.c
 int		free_mt(void **mt);
 t_bool	is_str_int(char *str_nb);

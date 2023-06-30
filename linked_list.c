@@ -6,7 +6,7 @@
 /*   By: tairribe <tairribe@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/15 21:13:43 by tairribe          #+#    #+#             */
-/*   Updated: 2023/06/22 23:20:10 by tairribe         ###   ########.fr       */
+/*   Updated: 2023/06/29 22:12:01 by tairribe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ void	new_node_back(t_dcll *dcll, int nb)
 	if (!node)
 		return ;
 	node->cont.nb = nb;
+	node->cont.index = -1;
 	if (dcll->head == NULL)
 	{
 		dcll->head = node;
@@ -44,6 +45,7 @@ void	new_node_front(t_dcll *dcll, int nb)
 	if (!node)
 		return ;
 	node->cont.nb = nb;
+	node->cont.index = -1;
 	if (dcll->head == NULL)
 	{
 		dcll->head = node;
@@ -61,17 +63,23 @@ void	new_node_front(t_dcll *dcll, int nb)
 
 void	print_dcll(t_dcll *dcll)
 {
-	t_node *tmp;
+	char	*keep_a;
+	t_node 	*tmp;
 	if (dcll->head == NULL)
 		return ;
-	
+
 	tmp = dcll->head;
-	while (tmp != dcll->tail)
+	while (true)
 	{
-		ft_printf("[%d] ", tmp->cont.nb);
+		if (tmp->cont.keep_a_index == true)
+			keep_a = "true";
+		else
+			keep_a = "false";
+		ft_printf("[%d] [%d] [%s]\n", tmp->cont.nb, tmp->cont.index, keep_a);
+		if (tmp == dcll->tail)
+			break;
 		tmp = tmp->next;
 	}
-	ft_printf("[%d]\n", tmp->cont.nb);
 }
 
 void	free_dcll(t_dcll *dcll)

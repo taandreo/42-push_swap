@@ -6,7 +6,7 @@
 /*   By: tairribe <tairribe@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/15 19:29:31 by tairribe          #+#    #+#             */
-/*   Updated: 2023/06/22 23:56:35 by tairribe         ###   ########.fr       */
+/*   Updated: 2023/06/29 22:07:34 by tairribe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,9 +26,9 @@ void	error(t_dcll *dcll)
 
 void	add_number(t_dcll *dcll, char *str_nb)
 {
-	if (ft_is_number(str_nb) == 0)
+	if (!ft_is_number(str_nb))
 		error(dcll);
-	if (is_str_int(str_nb) == false)
+	if (!is_str_int(str_nb))
 		error(dcll);
 	if (is_new_dcll(dcll, ft_atoi(str_nb)))
 		new_node_back(dcll, ft_atoi(str_nb));
@@ -68,6 +68,49 @@ t_dcll	*parse_argv(int argc, char *argv[])
 	return dcll;
 }
 
+t_node	*get_min_stack(t_dcll *list)
+{
+	int		i;
+	t_node	*node;
+	t_node	*min;
+
+	i = 0;
+	min = NULL;
+	node = list->head;
+	while (i < list->len)
+	{
+		if (node->cont.index == -1)
+		{
+			if(min == NULL)
+				min = node;
+			else {
+				if (node->cont.nb < min->cont.nb)
+					min = node;
+			}
+		}
+		i++;
+		node = node->next;
+	}
+	return min;
+}
+
+void	index_list(t_dcll *list)
+{
+	t_node	*node;
+	int		index;
+
+	node = NULL;
+	index = 0;
+	while(index < list->len)
+	{
+		node = get_min_stack(list);
+		node->cont.index = index;
+		index++;
+	}
+}
+
+
+
 int	main(int argc, char *argv[])
 {
 	t_dcll	*stack_a;
@@ -75,6 +118,8 @@ int	main(int argc, char *argv[])
 	if (argc < 2)
 		return(0);
 	stack_a = parse_argv(argc, argv);
+	index_list(stack_a);
+	set_best_index_markup(stack_a);
 	print_dcll(stack_a);
 	free_dcll(stack_a);
 }

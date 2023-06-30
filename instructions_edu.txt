@@ -18,7 +18,11 @@ deve printar Error
 4º passo - Criar os markups
 - Existe o markup por Index e o markup por Maior Que (Greater Than)
 - Os markups consistem em fazer um loop por cada elemento do stack A pra decedir quais serão mantidos na stack A e quais vão pra stack B(pb)
-- No markup por Index, começando pelo primeiro elemento da stack A verificamos se o próximo elemento é igual ao index do elemento + 1 e vamos adicionando os elementos que vão ficar na stack A, ao terminar a lista, setamos o markup como o próximo elemento e verificamos o numero de elementos que ficarão na stack A. Verificamos então em qual posição possui o maior número de elementos que vão se manter na stack A. Ex:
+  No markup por Index, começando pelo primeiro elemento da stack A verificamos se o próximo elemento é igual ao index 
+  do elemento + 1 e vamos adicionando os elementos que vão ficar na stack A, ao terminar a lista, setamos o markup 
+  como o próximo elemento e verificamos o numero de elementos que ficarão na stack A. Verificamos então em qual posição 
+  possui o maior número de elementos que vão se manter na stack A. Ex:
+  
   Stack A | Index |  Mantem no A
 ->  1        0    |   True
     5        3        False
