@@ -6,7 +6,7 @@
 /*   By: tairribe <tairribe@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/15 19:29:31 by tairribe          #+#    #+#             */
-/*   Updated: 2023/06/29 22:07:34 by tairribe         ###   ########.fr       */
+/*   Updated: 2023/06/29 23:38:28 by tairribe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -120,6 +120,7 @@ int	main(int argc, char *argv[])
 	stack_a = parse_argv(argc, argv);
 	index_list(stack_a);
 	set_best_index_markup(stack_a);
+	set_best_gt_markup(stack_a);
 	print_dcll(stack_a);
 	free_dcll(stack_a);
 }

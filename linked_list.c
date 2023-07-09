@@ -6,7 +6,7 @@
 /*   By: tairribe <tairribe@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/15 21:13:43 by tairribe          #+#    #+#             */
-/*   Updated: 2023/06/29 22:12:01 by tairribe         ###   ########.fr       */
+/*   Updated: 2023/06/29 23:48:49 by tairribe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,8 @@ void	new_node_front(t_dcll *dcll, int nb)
 
 void	print_dcll(t_dcll *dcll)
 {
-	char	*keep_a;
+	char	*keep_a_index;
+	char	*keep_a_gt;
 	t_node 	*tmp;
 	if (dcll->head == NULL)
 		return ;
@@ -72,10 +73,14 @@ void	print_dcll(t_dcll *dcll)
 	while (true)
 	{
 		if (tmp->cont.keep_a_index == true)
-			keep_a = "true";
+			keep_a_index = "true";
 		else
-			keep_a = "false";
-		ft_printf("[%d] [%d] [%s]\n", tmp->cont.nb, tmp->cont.index, keep_a);
+			keep_a_index = "false";
+		if (tmp->cont.keep_a_gt == true)
+			keep_a_gt = "true";
+		else
+			keep_a_gt = "false";
+		ft_printf("[%d] [%d] [%s] [%s]\n", tmp->cont.nb, tmp->cont.index, keep_a_index, keep_a_gt);
 		if (tmp == dcll->tail)
 			break;
 		tmp = tmp->next;
