@@ -6,7 +6,7 @@
 /*   By: tairribe <tairribe@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/15 21:13:43 by tairribe          #+#    #+#             */
-/*   Updated: 2023/07/09 14:32:25 by tairribe         ###   ########.fr       */
+/*   Updated: 2023/07/09 15:49:55 by tairribe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -139,7 +139,6 @@ t_dcll	*copy_dcll(t_dcll *list)
 	copy = ft_calloc(sizeof(t_dcll), 1);
 	while(true)
     {
-		
 		copy_node = new_node_back(copy, node->cont.nb);
 		copy_node->cont.index = node->cont.index;
         if (node == list->tail)
