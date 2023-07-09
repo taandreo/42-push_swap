@@ -6,14 +6,14 @@
 /*   By: tairribe <tairribe@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/15 21:13:43 by tairribe          #+#    #+#             */
-/*   Updated: 2023/06/29 23:48:49 by tairribe         ###   ########.fr       */
+/*   Updated: 2023/07/09 14:32:25 by tairribe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
 /* Doubly Circular Linked List struct*/
-void	new_node_back(t_dcll *dcll, int nb)
+t_node	*new_node_back(t_dcll *dcll, int nb)
 {
 	t_node	*node;
 
@@ -35,9 +35,10 @@ void	new_node_back(t_dcll *dcll, int nb)
 		dcll->tail = node;
 	}
 	dcll->len++;
+	return node;
 }
 
-void	new_node_front(t_dcll *dcll, int nb)
+t_node	*new_node_front(t_dcll *dcll, int nb)
 {
 	t_node	*node;
 
@@ -59,6 +60,7 @@ void	new_node_front(t_dcll *dcll, int nb)
 		dcll->head = node;
 	}
 	dcll->len++;
+	return node;
 }
 
 void	print_dcll(t_dcll *dcll)
@@ -126,4 +128,23 @@ t_bool	is_new_dcll(t_dcll *dcll, int nb)
 	if (tmp->cont.nb == nb)
 		return (0);
 	return (1);
+}
+
+t_dcll	*copy_dcll(t_dcll *list)
+{
+	t_dcll	*copy;
+	t_node	*node;
+	t_node	*copy_node;
+	
+	copy = ft_calloc(sizeof(t_dcll), 1);
+	while(true)
+    {
+		
+		copy_node = new_node_back(copy, node->cont.nb);
+		copy_node->cont.index = node->cont.index;
+        if (node == list->tail)
+            break;
+        node = node->next;
+    }
+	return copy;
 }

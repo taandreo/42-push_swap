@@ -6,7 +6,7 @@
 /*   By: tairribe <tairribe@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/28 19:49:13 by tairribe          #+#    #+#             */
-/*   Updated: 2023/06/29 23:42:04 by tairribe         ###   ########.fr       */
+/*   Updated: 2023/07/09 14:43:50 by tairribe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,10 +43,11 @@ typedef struct s_dcll
 
 // linked_list.c
 t_bool	is_new_dcll(t_dcll *dcll, int nb);
-void	new_node_back(t_dcll *dcll, int nb);
-void	new_node_front(t_dcll *dcll, int nb);
+t_node	*new_node_back(t_dcll *dcll, int nb);
+t_node	*new_node_front(t_dcll *dcll, int nb);
 void	print_dcll(t_dcll *dcll);
 void	free_dcll(t_dcll *dcll);
+t_dcll	*copy_dcll(t_dcll *list);
 // markup.c
 void	set_best_index_markup(t_dcll *list);
 int		set_index_markup(t_node *start);
@@ -55,5 +56,9 @@ int		set_gt_markup(t_node *start);
 // utils.c
 int		free_mt(void **mt);
 t_bool	is_str_int(char *str_nb);
+void	free_and_exit(t_dcll *dcll, int code);
+void	error(t_dcll *dcll);
+// parse.c
+t_dcll	*parse_argv(int argc, char *argv[]);
 
 #endif
