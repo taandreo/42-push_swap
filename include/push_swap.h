@@ -6,7 +6,7 @@
 /*   By: tairribe <tairribe@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/28 19:49:13 by tairribe          #+#    #+#             */
-/*   Updated: 2023/07/09 14:43:50 by tairribe         ###   ########.fr       */
+/*   Updated: 2023/07/10 23:33:31 by tairribe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,9 +22,7 @@ typedef	struct	s_cont
 {
 	int		nb;
 	int		index;
-	int		keep_a;
-	t_bool	keep_a_index;
-	t_bool	keep_a_gt;
+	t_bool	keep_a;
 }			t_cont;
 
 typedef struct s_node
@@ -36,8 +34,10 @@ typedef struct s_node
 
 typedef struct s_dcll
 {
-	t_node *head;
-	t_node *tail;
+	t_node	*head;
+	t_node	*tail;
+	t_node	*markup_head;
+	char	markup_type;
 	int		len;
 }			t_dcll;
 

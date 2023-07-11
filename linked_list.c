@@ -6,7 +6,7 @@
 /*   By: tairribe <tairribe@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/15 21:13:43 by tairribe          #+#    #+#             */
-/*   Updated: 2023/07/09 15:49:55 by tairribe         ###   ########.fr       */
+/*   Updated: 2023/07/10 23:00:56 by tairribe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ t_node	*new_node_back(t_dcll *dcll, int nb)
 
 	node = ft_calloc(sizeof(t_node), 1);
 	if (!node)
-		return ;
+		return (NULL);
 	node->cont.nb = nb;
 	node->cont.index = -1;
 	if (dcll->head == NULL)
@@ -44,7 +44,7 @@ t_node	*new_node_front(t_dcll *dcll, int nb)
 
 	node = ft_calloc(sizeof(t_node), 1);
 	if (!node)
-		return ;
+		return (NULL);
 	node->cont.nb = nb;
 	node->cont.index = -1;
 	if (dcll->head == NULL)
@@ -65,8 +65,8 @@ t_node	*new_node_front(t_dcll *dcll, int nb)
 
 void	print_dcll(t_dcll *dcll)
 {
-	char	*keep_a_index;
-	char	*keep_a_gt;
+	char	*keep_a;
+	// char	*keep_a_gt;
 	t_node 	*tmp;
 	if (dcll->head == NULL)
 		return ;
@@ -74,15 +74,11 @@ void	print_dcll(t_dcll *dcll)
 	tmp = dcll->head;
 	while (true)
 	{
-		if (tmp->cont.keep_a_index == true)
-			keep_a_index = "true";
+		if (tmp->cont.keep_a == true)
+			keep_a = "true";
 		else
-			keep_a_index = "false";
-		if (tmp->cont.keep_a_gt == true)
-			keep_a_gt = "true";
-		else
-			keep_a_gt = "false";
-		ft_printf("[%d] [%d] [%s] [%s]\n", tmp->cont.nb, tmp->cont.index, keep_a_index, keep_a_gt);
+			keep_a = "false";
+		ft_printf("[%d] [%d] [%s]\n", tmp->cont.nb, tmp->cont.index, keep_a);
 		if (tmp == dcll->tail)
 			break;
 		tmp = tmp->next;
@@ -137,6 +133,7 @@ t_dcll	*copy_dcll(t_dcll *list)
 	t_node	*copy_node;
 	
 	copy = ft_calloc(sizeof(t_dcll), 1);
+	node = NULL;
 	while(true)
     {
 		copy_node = new_node_back(copy, node->cont.nb);
@@ -145,5 +142,5 @@ t_dcll	*copy_dcll(t_dcll *list)
             break;
         node = node->next;
     }
-	return copy;
+	return (copy);
 }
