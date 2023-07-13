@@ -6,7 +6,7 @@
 /*   By: tairribe <tairribe@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/09 12:06:23 by tairribe          #+#    #+#             */
-/*   Updated: 2023/07/09 12:07:40 by tairribe         ###   ########.fr       */
+/*   Updated: 2023/07/12 23:53:34 by tairribe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,20 +38,17 @@ void	parse_space(t_dcll *dcll, char *str)
 		error(dcll);
 }
 
-t_dcll	*parse_argv(int argc, char *argv[])
+void	parse_argv(t_dcll *stack, int argc, char *argv[])
 {
-	int 	i;
-	t_dcll	*dcll;
+	int	i;
 
-	dcll = ft_calloc(sizeof(t_dcll), 1);
 	i = 1;
 	while(i < argc)
 	{
 		if (ft_strchr(argv[i], ' '))
-			parse_space(dcll, argv[i]);
+			parse_space(stack, argv[i]);
 		else
-			add_number(dcll, argv[i]);
+			add_number(stack, argv[i]);
 		i++;
 	}
-	return dcll;
 }

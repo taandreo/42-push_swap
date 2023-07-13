@@ -6,7 +6,7 @@
 /*   By: tairribe <tairribe@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/09 12:17:29 by tairribe          #+#    #+#             */
-/*   Updated: 2023/07/11 01:41:54 by tairribe         ###   ########.fr       */
+/*   Updated: 2023/07/12 23:57:11 by tairribe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,29 @@ void	swap(t_dcll	*stack)
 	swap = a->cont;
 	a->cont = b->cont;
 	b->cont = swap;
+}
+
+void	push(t_dcll *stack_1, t_dcll *stack_2)
+{
+	if (stack_1->head == NULL)
+		return ;
+	add_node_front(stack_2, del_node_front(stack_1));
+}
+
+void	rotate(t_dcll *stack)
+{
+	t_node	*tmp;
+	
+	if (stack->head == NULL)
+		return ;
+	if (stack->head == stack->head->next)
+		return ;
+	tmp = stack->head;
+	stack->head = stack->head->next;
+	// stack->head->prev = tmp;
+	// stack->tail->next = tmp;
+	stack->tail = tmp;
+	stack->tail->next = stack->head;
 }
 
 t_bool check_false(t_dcll *stack)
@@ -47,6 +70,7 @@ int	get_true(t_dcll *stack)
 	int	i;
 	t_node *node;
 
+	i = 0;
 	node = stack->head;
 	while(true)
     {
@@ -58,8 +82,6 @@ int	get_true(t_dcll *stack)
     }
 	return (i);
 }
-
-
 
 t_bool	check_and_swap(t_dcll	*stack_a)
 {
@@ -73,7 +95,7 @@ t_bool	check_and_swap(t_dcll	*stack_a)
 		if (get_true(stack_a) > trues_before)
 			return (true);
 		swap(stack_a);
-		set_gt_markup(stack_a);
+		set_gt_markup(stack_a->markup_head);
 	}
 	else
 	{
@@ -81,24 +103,53 @@ t_bool	check_and_swap(t_dcll	*stack_a)
 		if (get_true(stack_a) > trues_before)
 			return (true);
 		swap(stack_a);
-		set_index_markup(stack_a);
+		set_index_markup(stack_a->markup_head);
 	}
 	return (false);
 }
 
-void	solve(t_dcll *stack_a)
-{
-	t_dcll	*stack_b;
-	t_bool	swap;
 
-	stack_b = ft_calloc(sizeof(t_dcll), 1);
-	while (check_false(stack_a))
+void	add_move(t_list **moves, char *move)
+{
+	t_list *node;
+	
+	node = ft_lstnew((char *) ft_strdup(move));
+	ft_lstadd_back(moves, node);
+}
+
+
+void	print_moves(t_list *moves)
+{
+	t_list	*node;
+	
+	if (!moves)
+		return ;
+	node = moves;
+	ft_printf("moves: ");
+	while (node)
 	{
-		if (check_and_swap(stack_a))
-			continue ;
-		else if (stack_a->head->cont.keep_a == false)
-			push(stack_a, stack_b);
+		ft_printf("%s ", node->content);
+		node = node->next;
+	}
+	ft_printf("\n");
+}
+
+void	solve(t_push_swap *ps)
+{
+	while (check_false(ps->stack_a))
+	{
+		if (check_and_swap(ps->stack_a))
+			add_move(&ps->moves, "sa");
+		else if (ps->stack_a->head->cont.keep_a == false)
+		{
+			add_move(&ps->moves, "pb");
+			push(ps->stack_a, ps->stack_b);
+		}
 		else
-			rotate(stack_a);
-	}	
+		{
+			add_move(&ps->moves, "ra");
+			rotate(ps->stack_a);
+		}
+	}
+	print_moves(ps->moves);
 }

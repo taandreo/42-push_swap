@@ -6,7 +6,7 @@
 /*   By: tairribe <tairribe@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/15 19:29:31 by tairribe          #+#    #+#             */
-/*   Updated: 2023/07/09 19:08:38 by tairribe         ###   ########.fr       */
+/*   Updated: 2023/07/13 00:05:00 by tairribe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,20 +53,43 @@ void	index_list(t_dcll *list)
 	}
 }
 
+void	print_stacks(t_dcll *stack_a, t_dcll *stack_b)
+{
+	ft_printf("STACK A:\n");
+	print_dcll(stack_a);
+	ft_printf("--------------------------\n");
+	ft_printf("STACK B:\n");
+	print_dcll(stack_b);
+}
+
+t_push_swap	*init_push_swap()
+{
+	t_push_swap	*ps;
+
+	ps = ft_calloc(sizeof(t_push_swap), 1);
+	if (ps == NULL)
+		return NULL;
+	ps->stack_a = ft_calloc(sizeof(t_dcll), 1);
+	ps->stack_b = ft_calloc(sizeof(t_dcll), 1);
+	return (ps);
+}
+
 int	main(int argc, char *argv[])
 {
-	t_dcll	*stack_a;
+	t_push_swap	*ps;
 	
 	if (argc < 2)
 		return(0);
-	stack_a = parse_argv(argc, argv);
-	index_list(stack_a);
-	// copy_dcll(stack_a);
-	// set_best_index_markup(stack_a);
-	set_best_gt_markup(stack_a);
-	print_dcll(stack_a);
-	solve(stack_a);
-	print_dcll(stack_a);
-	free_dcll(stack_a);
+
+	ps = init_push_swap();
+	parse_argv(ps->stack_a, argc, argv);
+	index_list(ps->stack_a);
+	// set_best_index_markup(ps->stack_a);
+	set_best_gt_markup(ps->stack_a);
+	print_dcll(ps->stack_a);
+	ft_printf("\n\n");
+	solve(ps);
+	print_stacks(ps->stack_a, ps->stack_b);
+	free_and_exit(ps, 0);
 }
 

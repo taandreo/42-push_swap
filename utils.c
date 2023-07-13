@@ -6,7 +6,7 @@
 /*   By: tairribe <tairribe@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/22 20:57:01 by tairribe          #+#    #+#             */
-/*   Updated: 2023/07/09 12:09:39 by tairribe         ###   ########.fr       */
+/*   Updated: 2023/07/13 00:06:15 by tairribe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,14 +47,16 @@ t_bool	is_str_int(char *str_nb)
 	return true;
 }
 
-void	free_and_exit(t_dcll *dcll, int code)
+void	free_and_exit(t_push_swap *ps, int code)
 {
-	free_dcll(dcll);
+	free_dcll(ps->stack_a);
+	free_dcll(ps->stack_b);
+	ft_lstclear(&ps->moves, free);
 	exit(code);
 }
 
-void	error(t_dcll *dcll)
+void	error(t_push_swap *ps)
 {
 	ft_dprintf(2, "Error\n");
-	free_and_exit(dcll, 1);
+	free_and_exit(ps, 1);
 }

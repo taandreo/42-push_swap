@@ -6,22 +6,15 @@
 /*   By: tairribe <tairribe@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/15 21:13:43 by tairribe          #+#    #+#             */
-/*   Updated: 2023/07/10 23:00:56 by tairribe         ###   ########.fr       */
+/*   Updated: 2023/07/13 00:04:07 by tairribe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
 /* Doubly Circular Linked List struct*/
-t_node	*new_node_back(t_dcll *dcll, int nb)
+t_node	*add_node_back(t_dcll *dcll, t_node *node)
 {
-	t_node	*node;
-
-	node = ft_calloc(sizeof(t_node), 1);
-	if (!node)
-		return (NULL);
-	node->cont.nb = nb;
-	node->cont.index = -1;
 	if (dcll->head == NULL)
 	{
 		dcll->head = node;
@@ -38,7 +31,7 @@ t_node	*new_node_back(t_dcll *dcll, int nb)
 	return node;
 }
 
-t_node	*new_node_front(t_dcll *dcll, int nb)
+t_node	*new_node_back(t_dcll *dcll, int nb)
 {
 	t_node	*node;
 
@@ -47,6 +40,11 @@ t_node	*new_node_front(t_dcll *dcll, int nb)
 		return (NULL);
 	node->cont.nb = nb;
 	node->cont.index = -1;
+	return(add_node_back(dcll, node));
+}
+
+t_node	*add_node_front(t_dcll *dcll, t_node *node)
+{
 	if (dcll->head == NULL)
 	{
 		dcll->head = node;
@@ -61,6 +59,37 @@ t_node	*new_node_front(t_dcll *dcll, int nb)
 	}
 	dcll->len++;
 	return node;
+}
+
+t_node	*new_node_front(t_dcll *dcll, int nb)
+{
+	t_node	*node;
+
+	node = ft_calloc(sizeof(t_node), 1);
+	if (!node)
+		return (NULL);
+	node->cont.nb = nb;
+	node->cont.index = -1;
+	return(add_node_front(dcll, node));
+}
+
+t_node	*del_node_front(t_dcll *dcll)
+{
+	t_node *node;
+	
+	node = dcll->head;
+	if (dcll->head == NULL)
+		return (NULL);
+	if (dcll->head == dcll->head->next)
+	{
+		dcll->head = NULL;
+		dcll->tail = NULL;
+		return (NULL);
+	}
+	dcll->head = dcll->head->next;
+	dcll->head->prev = dcll->tail;
+	dcll->tail->next = dcll->head;
+	return (node);
 }
 
 void	print_dcll(t_dcll *dcll)
@@ -124,23 +153,4 @@ t_bool	is_new_dcll(t_dcll *dcll, int nb)
 	if (tmp->cont.nb == nb)
 		return (0);
 	return (1);
-}
-
-t_dcll	*copy_dcll(t_dcll *list)
-{
-	t_dcll	*copy;
-	t_node	*node;
-	t_node	*copy_node;
-	
-	copy = ft_calloc(sizeof(t_dcll), 1);
-	node = NULL;
-	while(true)
-    {
-		copy_node = new_node_back(copy, node->cont.nb);
-		copy_node->cont.index = node->cont.index;
-        if (node == list->tail)
-            break;
-        node = node->next;
-    }
-	return (copy);
 }
