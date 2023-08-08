@@ -6,25 +6,25 @@
 /*   By: tairribe <tairribe@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/09 12:06:23 by tairribe          #+#    #+#             */
-/*   Updated: 2023/07/12 23:53:34 by tairribe         ###   ########.fr       */
+/*   Updated: 2023/08/01 19:59:37 by tairribe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	add_number(t_dcll *dcll, char *str_nb)
+void	add_number(t_push_swap *ps, char *str_nb)
 {
 	if (!ft_is_number(str_nb))
-		error(dcll);
+		error(ps);
 	if (!is_str_int(str_nb))
-		error(dcll);
-	if (is_new_dcll(dcll, ft_atoi(str_nb)))
-		new_node_back(dcll, ft_atoi(str_nb));
+		error(ps);
+	if (is_new_dcll(ps->stack_a, ft_atoi(str_nb)))
+		new_node_back(ps->stack_a, ft_atoi(str_nb));
 	else
-		error(dcll);
+		error(ps);
 }
 
-void	parse_space(t_dcll *dcll, char *str)
+void	parse_space(t_push_swap *ps, char *str)
 {
 	char	**words;
 	int		i;
@@ -32,13 +32,13 @@ void	parse_space(t_dcll *dcll, char *str)
 	words = ft_split(str, ' ');
 	i = 0;
 	while (words[i] != NULL)
-		add_number(dcll, words[i++]);
+		add_number(ps, words[i++]);
 	free_mt((void **) words);
 	if (i == 0)
-		error(dcll);
+		error(ps);
 }
 
-void	parse_argv(t_dcll *stack, int argc, char *argv[])
+void	parse_argv(t_push_swap *ps, int argc, char *argv[])
 {
 	int	i;
 
@@ -46,9 +46,9 @@ void	parse_argv(t_dcll *stack, int argc, char *argv[])
 	while(i < argc)
 	{
 		if (ft_strchr(argv[i], ' '))
-			parse_space(stack, argv[i]);
+			parse_space(ps, argv[i]);
 		else
-			add_number(stack, argv[i]);
+			add_number(ps, argv[i]);
 		i++;
 	}
 }

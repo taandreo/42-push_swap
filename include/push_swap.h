@@ -6,7 +6,7 @@
 /*   By: tairribe <tairribe@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/28 19:49:13 by tairribe          #+#    #+#             */
-/*   Updated: 2023/07/13 00:06:29 by tairribe         ###   ########.fr       */
+/*   Updated: 2023/08/08 00:09:34 by tairribe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,8 +69,16 @@ t_bool	is_str_int(char *str_nb);
 void	free_and_exit(t_push_swap *ps, int code);
 void	error(t_push_swap *ps);
 // parse.c
-void	parse_argv(t_dcll *stack, int argc, char *argv[]);
+void	parse_argv(t_push_swap *ps, int argc, char *argv[]);
 // moves.c
+void	rrx(t_dcll *stack);
+void	rx(t_dcll *stack);
 void	solve(t_push_swap *ps);
+void	push(t_dcll *stack_1, t_dcll *stack_2);
+void	add_move(t_list **moves, char *move);
+
+// solve_b_to_a.c
+void	solve_b_to_a(t_push_swap *ps);
+void	print_stacks(t_dcll *stack_a, t_dcll *stack_b);
 
 #endif

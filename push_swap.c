@@ -6,7 +6,7 @@
 /*   By: tairribe <tairribe@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/15 19:29:31 by tairribe          #+#    #+#             */
-/*   Updated: 2023/07/13 00:05:00 by tairribe         ###   ########.fr       */
+/*   Updated: 2023/08/08 00:29:03 by tairribe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,9 +57,10 @@ void	print_stacks(t_dcll *stack_a, t_dcll *stack_b)
 {
 	ft_printf("STACK A:\n");
 	print_dcll(stack_a);
-	ft_printf("--------------------------\n");
+	ft_printf("\n");
 	ft_printf("STACK B:\n");
 	print_dcll(stack_b);
+	ft_printf("--------------------------\n");
 }
 
 t_push_swap	*init_push_swap()
@@ -80,16 +81,14 @@ int	main(int argc, char *argv[])
 	
 	if (argc < 2)
 		return(0);
-
 	ps = init_push_swap();
-	parse_argv(ps->stack_a, argc, argv);
+	parse_argv(ps, argc, argv);
 	index_list(ps->stack_a);
 	// set_best_index_markup(ps->stack_a);
 	set_best_gt_markup(ps->stack_a);
 	print_dcll(ps->stack_a);
 	ft_printf("\n\n");
 	solve(ps);
-	print_stacks(ps->stack_a, ps->stack_b);
 	free_and_exit(ps, 0);
 }
 

@@ -6,7 +6,7 @@
 /*   By: tairribe <tairribe@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/09 12:17:29 by tairribe          #+#    #+#             */
-/*   Updated: 2023/07/12 23:57:11 by tairribe         ###   ########.fr       */
+/*   Updated: 2023/08/08 00:05:22 by tairribe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ void	push(t_dcll *stack_1, t_dcll *stack_2)
 	add_node_front(stack_2, del_node_front(stack_1));
 }
 
-void	rotate(t_dcll *stack)
+void	rx(t_dcll *stack)
 {
 	t_node	*tmp;
 	
@@ -47,6 +47,16 @@ void	rotate(t_dcll *stack)
 	// stack->tail->next = tmp;
 	stack->tail = tmp;
 	stack->tail->next = stack->head;
+}
+
+void	rrx(t_dcll *stack)
+{	
+	if (stack->head == NULL)
+		return ;
+	if (stack->head == stack->head->next)
+		return ;
+	stack->head = stack->head->prev;
+	stack->tail = stack->head->prev;
 }
 
 t_bool check_false(t_dcll *stack)
@@ -83,7 +93,7 @@ int	get_true(t_dcll *stack)
 	return (i);
 }
 
-t_bool	check_and_swap(t_dcll	*stack_a)
+t_bool	check_and_swap(t_dcll *stack_a)
 {
 	int	trues_before;
 
@@ -134,7 +144,7 @@ void	print_moves(t_list *moves)
 	ft_printf("\n");
 }
 
-void	solve(t_push_swap *ps)
+void	solve_a_to_b(t_push_swap *ps)
 {
 	while (check_false(ps->stack_a))
 	{
@@ -148,8 +158,14 @@ void	solve(t_push_swap *ps)
 		else
 		{
 			add_move(&ps->moves, "ra");
-			rotate(ps->stack_a);
+			rx(ps->stack_a);
 		}
 	}
-	print_moves(ps->moves);
+}
+
+void	solve(t_push_swap *ps)
+{
+	solve_a_to_b(ps);
+	print_stacks(ps->stack_a, ps->stack_b);
+	solve_b_to_a(ps);
 }

@@ -6,7 +6,7 @@
 /*   By: tairribe <tairribe@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/15 21:13:43 by tairribe          #+#    #+#             */
-/*   Updated: 2023/07/13 00:04:07 by tairribe         ###   ########.fr       */
+/*   Updated: 2023/08/08 00:53:49 by tairribe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,11 +84,13 @@ t_node	*del_node_front(t_dcll *dcll)
 	{
 		dcll->head = NULL;
 		dcll->tail = NULL;
-		return (NULL);
+		dcll->len--;
+		return (node);
 	}
 	dcll->head = dcll->head->next;
 	dcll->head->prev = dcll->tail;
 	dcll->tail->next = dcll->head;
+	dcll->len--;
 	return (node);
 }
 
