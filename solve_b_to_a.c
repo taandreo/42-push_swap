@@ -6,7 +6,7 @@
 /*   By: tairribe <tairribe@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/02 17:59:50 by tairribe          #+#    #+#             */
-/*   Updated: 2023/08/08 00:55:36 by tairribe         ###   ########.fr       */
+/*   Updated: 2023/08/08 21:01:24 by tairribe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -178,15 +178,15 @@ void	solve_b_to_a(t_push_swap *ps)
 {
 	t_routes	*routes;
 	
-	while (ps->stack_b->len > 1){
+	while (ps->stack_b->len > 0){
 		print_stacks(ps->stack_a, ps->stack_b);
 		routes = find_next_node(ps);
 		mv_node_b_to_a(ps, routes);
 		push(ps->stack_b, ps->stack_a);
 		add_move(&ps->moves, "pa");
 	}
-	print_stacks(ps->stack_a, ps->stack_b);
-	push(ps->stack_b, ps->stack_a);
-	add_move(&ps->moves, "pa");
+	// print_stacks(ps->stack_a, ps->stack_b);
+	// push(ps->stack_b, ps->stack_a);
+	// add_move(&ps->moves, "pa");
 	print_stacks(ps->stack_a, ps->stack_b);
 }

@@ -6,7 +6,7 @@
 /*   By: tairribe <tairribe@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/28 19:49:13 by tairribe          #+#    #+#             */
-/*   Updated: 2023/08/08 00:09:34 by tairribe         ###   ########.fr       */
+/*   Updated: 2023/08/08 21:50:17 by tairribe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,12 +73,16 @@ void	parse_argv(t_push_swap *ps, int argc, char *argv[]);
 // moves.c
 void	rrx(t_dcll *stack);
 void	rx(t_dcll *stack);
-void	solve(t_push_swap *ps);
 void	push(t_dcll *stack_1, t_dcll *stack_2);
+void	swap(t_dcll	*stack);
 void	add_move(t_list **moves, char *move);
-
 // solve_b_to_a.c
 void	solve_b_to_a(t_push_swap *ps);
 void	print_stacks(t_dcll *stack_a, t_dcll *stack_b);
+void	find_moves(int *r, int *rr, t_dcll *stack, t_node *src_node);
+// solve_a_to_b.c
+void	solve_a_to_b(t_push_swap *ps);
+// solve.c
+void	solve(t_push_swap *ps);
 
 #endif
