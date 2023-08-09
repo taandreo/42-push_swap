@@ -6,7 +6,7 @@
 /*   By: tairribe <tairribe@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/08 20:57:52 by tairribe          #+#    #+#             */
-/*   Updated: 2023/08/08 21:09:57 by tairribe         ###   ########.fr       */
+/*   Updated: 2023/08/08 22:35:07 by tairribe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,15 +78,9 @@ void	solve_a_to_b(t_push_swap *ps)
 		if (check_and_swap(ps->stack_a))
 			add_move(&ps->moves, "sa");
 		else if (ps->stack_a->head->cont.keep_a == false)
-		{
-			add_move(&ps->moves, "pb");
-			push(ps->stack_a, ps->stack_b);
-		}
+			move(ps, "pb");
 		else
-		{
-			add_move(&ps->moves, "ra");
-			rx(ps->stack_a);
-		}
+			move(ps, "ra");
 	}
 }
 

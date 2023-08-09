@@ -6,7 +6,7 @@
 /*   By: tairribe <tairribe@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/15 19:29:31 by tairribe          #+#    #+#             */
-/*   Updated: 2023/08/08 20:52:19 by tairribe         ###   ########.fr       */
+/*   Updated: 2023/08/08 23:14:35 by tairribe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,16 +51,6 @@ void	index_list(t_dcll *list)
 		node->cont.index = index;
 		index++;
 	}
-}
-
-void	print_stacks(t_dcll *stack_a, t_dcll *stack_b)
-{
-	ft_printf("STACK A:\n");
-	print_dcll(stack_a);
-	ft_printf("\n");
-	ft_printf("STACK B:\n");
-	print_dcll(stack_b);
-	ft_printf("--------------------------\n");
 }
 
 t_push_swap	*init_push_swap()

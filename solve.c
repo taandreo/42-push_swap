@@ -6,7 +6,7 @@
 /*   By: tairribe <tairribe@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/08 21:07:53 by tairribe          #+#    #+#             */
-/*   Updated: 2023/08/08 21:55:41 by tairribe         ###   ########.fr       */
+/*   Updated: 2023/08/08 23:13:45 by tairribe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,4 +45,5 @@ void	solve(t_push_swap *ps)
 	solve_b_to_a(ps);
 	align(ps);
 	print_stacks(ps->stack_a, ps->stack_b);
+	print_moves(ps->moves);
 }

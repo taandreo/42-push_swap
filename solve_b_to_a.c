@@ -6,20 +6,11 @@
 /*   By: tairribe <tairribe@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/02 17:59:50 by tairribe          #+#    #+#             */
-/*   Updated: 2023/08/08 21:01:24 by tairribe         ###   ########.fr       */
+/*   Updated: 2023/08/08 23:03:28 by tairribe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-typedef struct s_routes {
-
-	t_node	*a_node;
-	t_node	*b_node;
-	char	a_route;
-	char	b_route;
-	int		moves;
-}	t_routes;
 
 /* find the ideal location for b_node in stack a. The ideal location will be*/
 t_node	*find_a_node_for_b(t_dcll *stack, t_node *b_node)
@@ -96,15 +87,6 @@ t_routes	*find_best_route(t_push_swap *ps, t_node *b_node)
 	return(mv);
 }
 
-void	print_routes(t_routes *routes)
-{
-	ft_printf("moves:   %i\n", routes->moves);
-	ft_printf("a_node:  %i\n", routes->a_node->cont.index);
-	ft_printf("b_node:  %i\n", routes->b_node->cont.index);
-	ft_printf("a_route: %i\n", routes->b_route);
-	ft_printf("b_route: %i\n", routes->a_route);
-}
-
 t_routes	*find_next_node(t_push_swap *ps)
 {
 	int			i;
@@ -139,38 +121,24 @@ void	mv_node_b_to_a(t_push_swap *ps, t_routes *routes)
 			routes->b_node != ps->stack_b->head)
 		{
 			if (routes->a_route == 0)
-			{
-				rx(ps->stack_a);
-				rx(ps->stack_b);
-				add_move(&ps->moves, "rr");
-			} else {
-				rrx(ps->stack_a);
-				rrx(ps->stack_b);
-				add_move(&ps->moves, "rrr");
-			}
+				move(ps, "rr");
+			else
+				move(ps, "rrr");
 		}
 	}
 	while (routes->a_node != ps->stack_a->head)
 	{
 		if (routes->a_route == 0)
-		{
-			rx(ps->stack_a);
-			add_move(&ps->moves, "ra");
-		} else {
-			rrx(ps->stack_a);
-			add_move(&ps->moves, "rra");
-		} 
+			move(ps, "ra");
+		else
+			move(ps, "rra");
 	}
 	while (routes->b_node != ps->stack_b->head)
 	{
 		if (routes->b_route == 0)
-		{
-			rx(ps->stack_b);
-			add_move(&ps->moves, "rb");
-		} else {
-			rrx(ps->stack_b);
-			add_move(&ps->moves, "rrb");
-		} 
+			move(ps, "rb");
+		else
+			move(ps, "rrb");
 	}
 }
 
@@ -182,8 +150,7 @@ void	solve_b_to_a(t_push_swap *ps)
 		print_stacks(ps->stack_a, ps->stack_b);
 		routes = find_next_node(ps);
 		mv_node_b_to_a(ps, routes);
-		push(ps->stack_b, ps->stack_a);
-		add_move(&ps->moves, "pa");
+		move(ps, "pa");
 	}
 	// print_stacks(ps->stack_a, ps->stack_b);
 	// push(ps->stack_b, ps->stack_a);

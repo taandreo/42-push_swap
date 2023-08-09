@@ -6,7 +6,7 @@
 /*   By: tairribe <tairribe@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/09 12:17:29 by tairribe          #+#    #+#             */
-/*   Updated: 2023/08/08 22:20:52 by tairribe         ###   ########.fr       */
+/*   Updated: 2023/08/08 23:11:37 by tairribe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,20 +55,4 @@ void	rrx(t_dcll *stack)
 		return ;
 	stack->head = stack->head->prev;
 	stack->tail = stack->head->prev;
-}
-
-void	print_moves(t_list *moves)
-{
-	t_list	*node;
-	
-	if (!moves)
-		return ;
-	node = moves;
-	ft_printf("moves: ");
-	while (node)
-	{
-		ft_printf("%s ", node->content);
-		node = node->next;
-	}
-	ft_printf("\n");
 }

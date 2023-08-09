@@ -6,7 +6,7 @@
 /*   By: tairribe <tairribe@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/28 19:49:13 by tairribe          #+#    #+#             */
-/*   Updated: 2023/08/08 21:50:17 by tairribe         ###   ########.fr       */
+/*   Updated: 2023/08/08 23:12:40 by tairribe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,15 @@ typedef struct s_push_swap
 	t_list	*moves;
 }			t_push_swap;
 
+typedef struct s_routes {
+
+	t_node	*a_node;
+	t_node	*b_node;
+	char	a_route;
+	char	b_route;
+	int		moves;
+}			t_routes;
+
 // linked_list.c
 t_bool	is_new_dcll(t_dcll *dcll, int nb);
 t_node	*new_node_back(t_dcll *dcll, int nb);
@@ -55,7 +64,6 @@ t_node	*new_node_front(t_dcll *dcll, int nb);
 t_node	*add_node_back(t_dcll *dcll, t_node *node);
 t_node	*add_node_front(t_dcll *dcll, t_node *node);
 t_node	*del_node_front(t_dcll *dcll);
-void	print_dcll(t_dcll *dcll);
 void	free_dcll(t_dcll *dcll);
 t_dcll	*copy_dcll(t_dcll *list);
 // markup.c
@@ -76,13 +84,19 @@ void	rx(t_dcll *stack);
 void	push(t_dcll *stack_1, t_dcll *stack_2);
 void	swap(t_dcll	*stack);
 void	add_move(t_list **moves, char *move);
+// moves2.c
+void	move(t_push_swap *ps, char *move);
 // solve_b_to_a.c
 void	solve_b_to_a(t_push_swap *ps);
-void	print_stacks(t_dcll *stack_a, t_dcll *stack_b);
 void	find_moves(int *r, int *rr, t_dcll *stack, t_node *src_node);
 // solve_a_to_b.c
 void	solve_a_to_b(t_push_swap *ps);
 // solve.c
 void	solve(t_push_swap *ps);
+// prints.c
+void	print_routes(t_routes *routes);
+void	print_moves(t_list *moves);
+void	print_stacks(t_dcll *stack_a, t_dcll *stack_b);
+
 
 #endif
