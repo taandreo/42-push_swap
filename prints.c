@@ -6,7 +6,7 @@
 /*   By: tairribe <tairribe@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/08 22:58:28 by tairribe          #+#    #+#             */
-/*   Updated: 2023/08/15 21:18:18 by tairribe         ###   ########.fr       */
+/*   Updated: 2023/08/15 21:56:02 by tairribe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,11 +24,10 @@ void	print_routes(t_routes *routes)
 void	print_stack(t_dcll *dcll)
 {
 	char	*keep_a;
-	// char	*keep_a_gt;
-	t_node 	*tmp;
+	t_node	*tmp;
+
 	if (dcll->head == NULL)
 		return ;
-
 	tmp = dcll->head;
 	while (true)
 	{
@@ -38,7 +37,7 @@ void	print_stack(t_dcll *dcll)
 			keep_a = "false";
 		ft_printf("[%d] [%d] [%s]\n", tmp->cont.nb, tmp->cont.index, keep_a);
 		if (tmp == dcll->tail)
-			break;
+			break ;
 		tmp = tmp->next;
 	}
 }
@@ -56,7 +55,7 @@ void	print_stacks(t_dcll *stack_a, t_dcll *stack_b)
 void	print_moves(t_list *moves)
 {
 	t_list	*node;
-	
+
 	if (!moves)
 		return ;
 	node = moves;
@@ -70,7 +69,7 @@ void	print_moves(t_list *moves)
 void	print_moves_inline(t_list *moves)
 {
 	t_list	*node;
-	
+
 	if (!moves)
 		return ;
 	node = moves;

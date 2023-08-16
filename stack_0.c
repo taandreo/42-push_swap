@@ -6,7 +6,7 @@
 /*   By: tairribe <tairribe@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/15 21:31:52 by tairribe          #+#    #+#             */
-/*   Updated: 2023/08/15 21:35:27 by tairribe         ###   ########.fr       */
+/*   Updated: 2023/08/15 22:35:51 by tairribe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,11 @@ t_node	*add_node_back(t_dcll *dcll, t_node *node)
 	{
 		dcll->head = node;
 		dcll->tail = node;
-		node->next = node->prev = node;
-	} else {
+		node->next = node;
+		node->prev = node;
+	}
+	else
+	{
 		dcll->tail->next = node;
 		node->prev = dcll->tail;
 		node->next = dcll->head;
@@ -28,7 +31,7 @@ t_node	*add_node_back(t_dcll *dcll, t_node *node)
 		dcll->tail = node;
 	}
 	dcll->len++;
-	return node;
+	return (node);
 }
 
 t_node	*new_node_back(t_dcll *dcll, int nb)
@@ -40,7 +43,7 @@ t_node	*new_node_back(t_dcll *dcll, int nb)
 		return (NULL);
 	node->cont.nb = nb;
 	node->cont.index = -1;
-	return(add_node_back(dcll, node));
+	return (add_node_back(dcll, node));
 }
 
 t_node	*add_node_front(t_dcll *dcll, t_node *node)
@@ -49,8 +52,11 @@ t_node	*add_node_front(t_dcll *dcll, t_node *node)
 	{
 		dcll->head = node;
 		dcll->tail = node;
-		node->next = node->prev = node;
-	} else {
+		node->next = node;
+		node->prev = node;
+	}
+	else
+	{
 		dcll->head->prev = node;
 		node->prev = dcll->tail;
 		node->next = dcll->head;
@@ -58,7 +64,7 @@ t_node	*add_node_front(t_dcll *dcll, t_node *node)
 		dcll->head = node;
 	}
 	dcll->len++;
-	return node;
+	return (node);
 }
 
 t_node	*new_node_front(t_dcll *dcll, int nb)
@@ -70,13 +76,13 @@ t_node	*new_node_front(t_dcll *dcll, int nb)
 		return (NULL);
 	node->cont.nb = nb;
 	node->cont.index = -1;
-	return(add_node_front(dcll, node));
+	return (add_node_front(dcll, node));
 }
 
 t_node	*del_node_front(t_dcll *dcll)
 {
-	t_node *node;
-	
+	t_node	*node;
+
 	node = dcll->head;
 	if (dcll->head == NULL)
 		return (NULL);

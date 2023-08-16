@@ -12,7 +12,7 @@ ifeq ($(UNAME), Darwin)
 	CFLAGS = -Wall -Wextra -Werror -arch x86_64
 endif
 
-SRCS = index.c stack_0.c stack_1.c push_swap.c utils.c markup.c parse.c moves_0.c moves_1.c solve_b_to_a.c solve_a_to_b.c solve.c prints.c
+SRCS = index.c stack_0.c stack_1.c push_swap.c utils.c markup.c parse.c moves_0.c moves_1.c solve_b_to_a_0.c solve_b_to_a_1.c solve_a_to_b.c solve.c prints.c
 
 OBJS = $(SRCS:.c=.o)
 

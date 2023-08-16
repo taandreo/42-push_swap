@@ -6,7 +6,7 @@
 /*   By: tairribe <tairribe@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/29 21:49:54 by tairribe          #+#    #+#             */
-/*   Updated: 2023/08/09 21:53:02 by tairribe         ###   ########.fr       */
+/*   Updated: 2023/08/15 21:51:21 by tairribe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,13 +16,13 @@ void	set_best_index_markup(t_dcll *stack)
 {
 	t_node	*node;
 	int		keep_a_max;
-	int 	keep_a;
+	int		keep_a;
 
 	node = stack->head;
 	keep_a_max = set_index_markup(node);
 	stack->markup_head = node;
 	node = node->next;
-	while(node != stack->head)
+	while (node != stack->head)
 	{	
 		keep_a = set_index_markup(node);
 		if (keep_a > keep_a_max)
@@ -48,15 +48,15 @@ int	set_index_markup(t_node *start)
 
 	index = start->cont.index;
 	start->cont.keep_a = true;
-	node  = start->next;
-	while(node != start)
+	node = start->next;
+	while (node != start)
 	{
 		if (node->cont.index == index + 1)
 		{
 			node->cont.keep_a = true;
 			index++;
 		}
-		else 
+		else
 			node->cont.keep_a = false;
 		node = node->next;
 	}
@@ -67,13 +67,13 @@ void	set_best_gt_markup(t_dcll *stack)
 {
 	t_node	*node;
 	int		keep_a_max;
-	int 	keep_a;
+	int		keep_a;
 
 	node = stack->head;
 	keep_a_max = set_gt_markup(node);
 	stack->markup_head = node;
 	node = node->next;
-	while(node != stack->head)
+	while (node != stack->head)
 	{	
 		keep_a = set_gt_markup(node);
 		if (keep_a > keep_a_max)
@@ -100,9 +100,9 @@ int	set_gt_markup(t_node *start)
 
 	nb = start->cont.nb;
 	start->cont.keep_a = true;
-	node  = start->next;
+	node = start->next;
 	i = 1;
-	while(node != start)
+	while (node != start)
 	{
 		if (node->cont.nb > nb)
 		{
@@ -110,7 +110,7 @@ int	set_gt_markup(t_node *start)
 			nb = node->cont.nb;
 			i++;
 		}
-		else 
+		else
 			node->cont.keep_a = false;
 		node = node->next;
 	}

@@ -6,19 +6,19 @@
 /*   By: tairribe <tairribe@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/15 19:29:31 by tairribe          #+#    #+#             */
-/*   Updated: 2023/08/15 21:43:47 by tairribe         ###   ########.fr       */
+/*   Updated: 2023/08/15 21:57:36 by tairribe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-t_push_swap	*init_push_swap()
+t_push_swap	*init_push_swap(void)
 {
 	t_push_swap	*ps;
 
 	ps = ft_calloc(sizeof(t_push_swap), 1);
 	if (ps == NULL)
-		return NULL;
+		return (NULL);
 	ps->stack_a = ft_calloc(sizeof(t_dcll), 1);
 	ps->stack_b = ft_calloc(sizeof(t_dcll), 1);
 	ps->moves = NULL;
@@ -49,10 +49,9 @@ void	index_markup(t_push_swap *ps)
 int	main(int argc, char *argv[])
 {
 	t_push_swap	*ps;
-	
+
 	if (argc < 2)
-		return(0);
-	
+		return (0);
 	ps = init_push_swap();
 	parse_argv(ps, argc, argv);
 	gt_markup(ps);
@@ -64,4 +63,3 @@ int	main(int argc, char *argv[])
 		print_moves(ps->moves);
 	free_and_exit(ps, 0);
 }
-

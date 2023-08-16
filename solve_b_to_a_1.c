@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   solve_b_to_a.c                                     :+:      :+:    :+:   */
+/*   solve_b_to_a_1.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tairribe <tairribe@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/08/02 17:59:50 by tairribe          #+#    #+#             */
-/*   Updated: 2023/08/15 20:46:39 by tairribe         ###   ########.fr       */
+/*   Created: 2023/08/15 22:12:59 by tairribe          #+#    #+#             */
+/*   Updated: 2023/08/15 22:25:44 by tairribe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,16 +20,17 @@ t_node	*find_a_node_for_b(t_dcll *stack, t_node *b_node)
 	a_node = stack->head;
 	if (b_node->cont.index < a_node->cont.index)
 	{
-		while (b_node->cont.index < a_node->prev->cont.index &&
-			a_node->cont.index > a_node->prev->cont.index)
+		while (b_node->cont.index < a_node->prev->cont.index
+			&& a_node->cont.index > a_node->prev->cont.index)
 			a_node = a_node->prev;
 	}
-	else {
-		while (b_node->cont.index > a_node->cont.index &&
-			a_node->cont.index < a_node->next->cont.index)
+	else
+	{
+		while (b_node->cont.index > a_node->cont.index
+			&& a_node->cont.index < a_node->next->cont.index)
 			a_node = a_node->next;
-		if (b_node->cont.index > a_node->cont.index &&
-			a_node->cont.index > a_node->next->cont.index)
+		if (b_node->cont.index > a_node->cont.index
+			&& a_node->cont.index > a_node->next->cont.index)
 			a_node = a_node->next;
 	}
 	return (a_node);
@@ -37,10 +38,10 @@ t_node	*find_a_node_for_b(t_dcll *stack, t_node *b_node)
 
 void	find_moves(int *r, int *rr, t_dcll *stack, t_node *src_node)
 {
+	t_node	*node;
+
 	*r = 0;
 	*rr = 0;
-	t_node *node;
-
 	node = src_node;
 	while (node != stack->head)
 	{	
@@ -83,72 +84,5 @@ t_routes	*find_best_route(t_push_swap *ps, t_node *b_node)
 		set_routes(mv, 0, 1, ra + rrb);
 	if (rra + rb < mv->moves)
 		set_routes(mv, 1, 0, ra + rrb);
-	return(mv);
-}
-
-t_routes	*find_next_node(t_push_swap *ps)
-{
-	int			i;
-	t_node		*node;
-	t_routes	*route;
-	t_routes    *best_route;
-
-	i = 1;
-	node = ps->stack_b->head;
-	best_route = find_best_route(ps, node);
-	node = node->next;
-	while (i < ps->stack_b->len) 
-	{
-		route = find_best_route(ps, node);
-		if (route->moves < best_route->moves)
-		{
-			free(best_route);
-			best_route = route;
-		} else {
-			free(route);
-		}
-		node = node->next;
-		i++;
-	}
-	return(best_route);
-}
-
-void	mv_node_b_to_a(t_push_swap *ps, t_routes *routes)
-{
-	if (routes->a_route == routes->b_route){
-		while (routes->a_node != ps->stack_a->head &&
-			routes->b_node != ps->stack_b->head)
-		{
-			if (routes->a_route == 0)
-				move(ps, "rr");
-			else
-				move(ps, "rrr");
-		}
-	}
-	while (routes->a_node != ps->stack_a->head)
-	{
-		if (routes->a_route == 0)
-			move(ps, "ra");
-		else
-			move(ps, "rra");
-	}
-	while (routes->b_node != ps->stack_b->head)
-	{
-		if (routes->b_route == 0)
-			move(ps, "rb");
-		else
-			move(ps, "rrb");
-	}
-}
-
-void	solve_b_to_a(t_push_swap *ps)
-{
-	t_routes	*routes;
-	
-	while (ps->stack_b->len > 0){
-		routes = find_next_node(ps);
-		mv_node_b_to_a(ps, routes);
-		free(routes);
-		move(ps, "pa");
-	}
+	return (mv);
 }

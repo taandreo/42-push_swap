@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   moves2.c                                           :+:      :+:    :+:   */
+/*   moves_1.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tairribe <tairribe@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/08 22:01:03 by tairribe          #+#    #+#             */
-/*   Updated: 2023/08/08 22:29:14 by tairribe         ###   ########.fr       */
+/*   Updated: 2023/08/15 21:53:06 by tairribe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,13 @@
 
 void	add_move(t_list **moves, char *move)
 {
-	t_list *node;
-	
+	t_list	*node;
+
 	node = ft_lstnew((char *) ft_strdup(move));
 	ft_lstadd_back(moves, node);
 }
 
-void 	rotate(t_push_swap *ps, char *move)
+void	rotate(t_push_swap *ps, char *move)
 {
 	if (ft_strncmp(move, "ra", 3) == 0)
 		rx(ps->stack_a);

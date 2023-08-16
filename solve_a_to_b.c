@@ -6,43 +6,43 @@
 /*   By: tairribe <tairribe@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/08 20:57:52 by tairribe          #+#    #+#             */
-/*   Updated: 2023/08/08 22:35:07 by tairribe         ###   ########.fr       */
+/*   Updated: 2023/08/15 22:01:20 by tairribe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-t_bool check_false(t_dcll *stack)
+t_bool	check_false(t_dcll *stack)
 {
-	t_node *node;
+	t_node	*node;
 
 	node = stack->head;
-	while(true)
-    {
+	while (true)
+	{
 		if (node->cont.keep_a == false)
 			return (true);
-        if (node == stack->tail)
-            break;
-        node = node->next;
-    }
+		if (node == stack->tail)
+			break ;
+		node = node->next;
+	}
 	return (false);
 }
 
 int	get_true(t_dcll *stack)
 {
-	int	i;
-	t_node *node;
+	int		i;
+	t_node	*node;
 
 	i = 0;
 	node = stack->head;
-	while(true)
-    {
+	while (true)
+	{
 		if (node->cont.keep_a == true)
 			i++;
-        if (node == stack->tail)
-            break;
-        node = node->next;
-    }
+		if (node == stack->tail)
+			break ;
+		node = node->next;
+	}
 	return (i);
 }
 
@@ -83,4 +83,3 @@ void	solve_a_to_b(t_push_swap *ps)
 			move(ps, "ra");
 	}
 }
-

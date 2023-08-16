@@ -6,7 +6,7 @@
 /*   By: tairribe <tairribe@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/28 19:49:13 by tairribe          #+#    #+#             */
-/*   Updated: 2023/08/15 21:42:32 by tairribe         ###   ########.fr       */
+/*   Updated: 2023/08/15 22:18:02 by tairribe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,7 +89,9 @@ void	swap(t_dcll	*stack);
 void	add_move(t_list **moves, char *move);
 // moves2.c
 void	move(t_push_swap *ps, char *move);
-// solve_b_to_a.c
+// solve_b_to_a_1.c
+t_routes	*find_best_route(t_push_swap *ps, t_node *b_node);
+// solve_b_to_a_0.c
 void	solve_b_to_a(t_push_swap *ps);
 void	find_moves(int *r, int *rr, t_dcll *stack, t_node *src_node);
 // solve_a_to_b.c

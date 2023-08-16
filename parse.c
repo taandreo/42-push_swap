@@ -6,7 +6,7 @@
 /*   By: tairribe <tairribe@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/09 12:06:23 by tairribe          #+#    #+#             */
-/*   Updated: 2023/08/01 19:59:37 by tairribe         ###   ########.fr       */
+/*   Updated: 2023/08/15 21:54:20 by tairribe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ void	parse_argv(t_push_swap *ps, int argc, char *argv[])
 	int	i;
 
 	i = 1;
-	while(i < argc)
+	while (i < argc)
 	{
 		if (ft_strchr(argv[i], ' '))
 			parse_space(ps, argv[i]);

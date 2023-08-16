@@ -6,7 +6,7 @@
 /*   By: tairribe <tairribe@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/15 21:41:52 by tairribe          #+#    #+#             */
-/*   Updated: 2023/08/15 21:43:52 by tairribe         ###   ########.fr       */
+/*   Updated: 2023/08/15 21:49:19 by tairribe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,9 +25,10 @@ t_node	*get_min_stack(t_dcll *list)
 	{
 		if (node->cont.index == -1)
 		{
-			if(min == NULL)
+			if (min == NULL)
 				min = node;
-			else {
+			else
+			{
 				if (node->cont.nb < min->cont.nb)
 					min = node;
 			}
@@ -35,7 +36,7 @@ t_node	*get_min_stack(t_dcll *list)
 		i++;
 		node = node->next;
 	}
-	return min;
+	return (min);
 }
 
 void	index_list(t_dcll *list)
@@ -45,7 +46,7 @@ void	index_list(t_dcll *list)
 
 	node = NULL;
 	index = 0;
-	while(index < list->len)
+	while (index < list->len)
 	{
 		node = get_min_stack(list);
 		node->cont.index = index;
