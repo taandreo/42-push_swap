@@ -6,7 +6,7 @@
 /*   By: tairribe <tairribe@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/28 19:49:13 by tairribe          #+#    #+#             */
-/*   Updated: 2023/08/15 22:52:57 by tairribe         ###   ########.fr       */
+/*   Updated: 2023/08/16 02:42:32 by tairribe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,7 @@ typedef struct s_push_swap
 	t_dcll	*stack_b;
 	t_list	*moves;
 	t_list  *moves_gt;
+	char	**words;
 }			t_push_swap;
 
 typedef struct s_routes {

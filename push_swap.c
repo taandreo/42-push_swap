@@ -6,7 +6,7 @@
 /*   By: tairribe <tairribe@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/15 19:29:31 by tairribe          #+#    #+#             */
-/*   Updated: 2023/08/15 21:57:36 by tairribe         ###   ########.fr       */
+/*   Updated: 2023/08/16 02:55:44 by tairribe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ t_push_swap	*init_push_swap(void)
 	ps->stack_b = ft_calloc(sizeof(t_dcll), 1);
 	ps->moves = NULL;
 	ps->moves_gt = NULL;
+	ps->words = NULL;
 	return (ps);
 }
 

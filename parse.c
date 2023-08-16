@@ -6,7 +6,7 @@
 /*   By: tairribe <tairribe@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/09 12:06:23 by tairribe          #+#    #+#             */
-/*   Updated: 2023/08/15 21:54:20 by tairribe         ###   ########.fr       */
+/*   Updated: 2023/08/16 02:52:06 by tairribe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,14 +26,14 @@ void	add_number(t_push_swap *ps, char *str_nb)
 
 void	parse_space(t_push_swap *ps, char *str)
 {
-	char	**words;
 	int		i;
 
-	words = ft_split(str, ' ');
+	ps->words = ft_split(str, ' ');
 	i = 0;
-	while (words[i] != NULL)
-		add_number(ps, words[i++]);
-	free_mt((void **) words);
+	while (ps->words[i] != NULL)
+		add_number(ps, ps->words[i++]);
+	free_mt((void **) ps->words);
+	ps->words = NULL;
 	if (i == 0)
 		error(ps);
 }

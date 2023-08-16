@@ -6,7 +6,7 @@
 /*   By: tairribe <tairribe@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/22 20:57:01 by tairribe          #+#    #+#             */
-/*   Updated: 2023/08/15 22:39:13 by tairribe         ###   ########.fr       */
+/*   Updated: 2023/08/16 02:49:48 by tairribe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@ int	free_mt(void **mt)
 	int	i;
 
 	i = 0;
+	if (mt == NULL)
+		return (i);
 	while (mt[i])
 		free(mt[i++]);
 	free(mt);
@@ -53,6 +55,7 @@ void	free_and_exit(t_push_swap *ps, int code)
 	free_dcll(ps->stack_b);
 	ft_lstclear(&ps->moves, free);
 	ft_lstclear(&ps->moves_gt, free);
+	free_mt((void **) ps->words);
 	free(ps);
 	exit(code);
 }
