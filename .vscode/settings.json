@@ -2,6 +2,7 @@
     "files.associations": {
         "variant": "c",
         "chrono": "c",
-        "__node_handle": "c"
+        "__node_handle": "c",
+        "stdio.h": "c"
     }
 }

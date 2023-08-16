@@ -6,7 +6,7 @@
 /*   By: tairribe <tairribe@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/29 21:49:54 by tairribe          #+#    #+#             */
-/*   Updated: 2023/07/10 23:35:09 by tairribe         ###   ########.fr       */
+/*   Updated: 2023/08/09 21:53:02 by tairribe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,6 @@ int	set_index_markup(t_node *start)
 		else 
 			node->cont.keep_a = false;
 		node = node->next;
-		
 	}
 	return (index - start->cont.index + 1);
 }

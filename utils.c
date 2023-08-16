@@ -6,7 +6,7 @@
 /*   By: tairribe <tairribe@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/22 20:57:01 by tairribe          #+#    #+#             */
-/*   Updated: 2023/07/13 00:07:50 by tairribe         ###   ########.fr       */
+/*   Updated: 2023/08/15 21:26:53 by tairribe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,8 @@ void	free_and_exit(t_push_swap *ps, int code)
 	free_dcll(ps->stack_a);
 	free_dcll(ps->stack_b);
 	ft_lstclear(&ps->moves, free);
+	ft_lstclear(&ps->moves_gt, free);
+	free(ps);
 	exit(code);
 }
 

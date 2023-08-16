@@ -6,7 +6,7 @@
 /*   By: tairribe <tairribe@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/02 17:59:50 by tairribe          #+#    #+#             */
-/*   Updated: 2023/08/08 23:03:28 by tairribe         ###   ########.fr       */
+/*   Updated: 2023/08/15 20:46:39 by tairribe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,12 +26,11 @@ t_node	*find_a_node_for_b(t_dcll *stack, t_node *b_node)
 	}
 	else {
 		while (b_node->cont.index > a_node->cont.index &&
-			a_node->cont.index < a_node->next->cont.index){
+			a_node->cont.index < a_node->next->cont.index)
 			a_node = a_node->next;
-			if (b_node->cont.index > a_node->cont.index &&
-				a_node->cont.index > a_node->next->cont.index)
-				a_node = a_node->next;
-		}
+		if (b_node->cont.index > a_node->cont.index &&
+			a_node->cont.index > a_node->next->cont.index)
+			a_node = a_node->next;
 	}
 	return (a_node);
 }
@@ -94,12 +93,12 @@ t_routes	*find_next_node(t_push_swap *ps)
 	t_routes	*route;
 	t_routes    *best_route;
 
-	i = 0;
+	i = 1;
 	node = ps->stack_b->head;
 	best_route = find_best_route(ps, node);
+	node = node->next;
 	while (i < ps->stack_b->len) 
 	{
-		node = node->next;
 		route = find_best_route(ps, node);
 		if (route->moves < best_route->moves)
 		{
@@ -147,13 +146,9 @@ void	solve_b_to_a(t_push_swap *ps)
 	t_routes	*routes;
 	
 	while (ps->stack_b->len > 0){
-		print_stacks(ps->stack_a, ps->stack_b);
 		routes = find_next_node(ps);
 		mv_node_b_to_a(ps, routes);
+		free(routes);
 		move(ps, "pa");
 	}
-	// print_stacks(ps->stack_a, ps->stack_b);
-	// push(ps->stack_b, ps->stack_a);
-	// add_move(&ps->moves, "pa");
-	print_stacks(ps->stack_a, ps->stack_b);
 }

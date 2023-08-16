@@ -6,7 +6,7 @@
 /*   By: tairribe <tairribe@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/08 22:58:28 by tairribe          #+#    #+#             */
-/*   Updated: 2023/08/08 23:11:47 by tairribe         ###   ########.fr       */
+/*   Updated: 2023/08/15 21:18:18 by tairribe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,20 @@ void	print_moves(t_list *moves)
 	if (!moves)
 		return ;
 	node = moves;
-	ft_printf("moves: ");
+	while (node)
+	{
+		ft_printf("%s\n", node->content);
+		node = node->next;
+	}
+}
+
+void	print_moves_inline(t_list *moves)
+{
+	t_list	*node;
+	
+	if (!moves)
+		return ;
+	node = moves;
 	while (node)
 	{
 		ft_printf("%s ", node->content);
