@@ -6,7 +6,7 @@
 /*   By: tairribe <tairribe@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/28 19:49:13 by tairribe          #+#    #+#             */
-/*   Updated: 2023/08/15 21:22:51 by tairribe         ###   ########.fr       */
+/*   Updated: 2023/08/15 21:42:32 by tairribe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,15 +58,17 @@ typedef struct s_routes {
 	int		moves;
 }			t_routes;
 
-// linked_list.c
-t_bool	is_new_dcll(t_dcll *dcll, int nb);
+// stack_0.c
 t_node	*new_node_back(t_dcll *dcll, int nb);
 t_node	*new_node_front(t_dcll *dcll, int nb);
 t_node	*add_node_back(t_dcll *dcll, t_node *node);
 t_node	*add_node_front(t_dcll *dcll, t_node *node);
 t_node	*del_node_front(t_dcll *dcll);
+// stack_1.c
+t_bool	is_new_dcll(t_dcll *dcll, int nb);
 void	free_dcll(t_dcll *dcll);
-t_dcll	*copy_dcll(t_dcll *list);
+// index.c
+void	index_list(t_dcll *list);
 // markup.c
 void	set_best_index_markup(t_dcll *list);
 int		set_index_markup(t_node *start);
