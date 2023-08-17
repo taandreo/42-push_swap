@@ -6,7 +6,7 @@
 /*   By: tairribe <tairribe@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/17 00:24:00 by tairribe          #+#    #+#             */
-/*   Updated: 2023/08/17 00:43:41 by tairribe         ###   ########.fr       */
+/*   Updated: 2023/08/17 00:51:15 by tairribe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,5 +36,4 @@ int	main(int argc, char *argv[])
 		return (0);
 	ps = init_push_swap();
 	parse_argv(ps, argc, argv);
-    
 }
