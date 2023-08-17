@@ -1,3 +1,5 @@
 libft/
+ignore/
 *.o
 push_swap
+checker
