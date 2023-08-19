@@ -6,7 +6,7 @@
 /*   By: tairribe <tairribe@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/17 00:24:00 by tairribe          #+#    #+#             */
-/*   Updated: 2023/08/19 15:43:55 by tairribe         ###   ########.fr       */
+/*   Updated: 2023/08/19 19:00:51 by tairribe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,7 @@ void	read_moves(t_push_swap *ps)
 		move = ft_strtrim(line, "\n");
 		free(line);
 		apply_move(ps, move);
+		free(move);
 		line = get_next_line(0);
 	}
 }
