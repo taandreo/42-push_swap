@@ -6,7 +6,7 @@
 /*   By: tairribe <tairribe@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/17 00:24:00 by tairribe          #+#    #+#             */
-/*   Updated: 2023/08/19 15:20:57 by tairribe         ###   ########.fr       */
+/*   Updated: 2023/08/19 15:43:55 by tairribe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,15 +65,14 @@ void	check(t_push_swap *ps)
 {
 	t_node *node;
 
-	if (ps->stack_b != NULL)
+	print_stacks(ps->stack_a, ps->stack_b);
+	if (ps->stack_b->head != NULL)
 		print_and_exit(ps, "KO");
 	node = ps->stack_a->head;
-	while (true)
+	while (node != ps->stack_a->tail)
 	{
 		if (node->cont.nb > node->next->cont.nb)
 			print_and_exit(ps, "KO");
-		if (node == ps->stack_a->tail)
-			break ;
 		node = node->next;
 	}
 	print_and_exit(ps, "OK");
