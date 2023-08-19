@@ -1,9 +1,0 @@
-{
-    "files.associations": {
-        "variant": "c",
-        "chrono": "c",
-        "__node_handle": "c",
-        "stdio.h": "c",
-        "push_swap.h": "c"
-    }
-}

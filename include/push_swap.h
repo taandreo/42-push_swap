@@ -6,7 +6,7 @@
 /*   By: tairribe <tairribe@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/28 19:49:13 by tairribe          #+#    #+#             */
-/*   Updated: 2023/08/16 02:42:32 by tairribe         ###   ########.fr       */
+/*   Updated: 2023/08/19 15:20:23 by tairribe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,6 +78,7 @@ int		set_gt_markup(t_node *start);
 // utils.c
 int		free_mt(void **mt);
 t_bool	is_str_int(char *str_nb);
+t_push_swap	*init_push_swap(void);
 void	free_and_exit(t_push_swap *ps, int code);
 void	error(t_push_swap *ps);
 // parse.c
@@ -103,6 +104,5 @@ void	solve(t_push_swap *ps);
 void	print_routes(t_routes *routes);
 void	print_moves(t_list *moves);
 void	print_stacks(t_dcll *stack_a, t_dcll *stack_b);
-
 
 #endif

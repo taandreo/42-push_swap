@@ -6,7 +6,7 @@
 /*   By: tairribe <tairribe@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/08 22:01:03 by tairribe          #+#    #+#             */
-/*   Updated: 2023/08/15 21:53:06 by tairribe         ###   ########.fr       */
+/*   Updated: 2023/08/17 23:45:00 by tairribe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,11 @@ void	move(t_push_swap *ps, char *move)
 		swap(ps->stack_a);
 	if (ft_strncmp(move, "sb", 3) == 0)
 		swap(ps->stack_b);
+	if (ft_strncmp(move, "ss", 3) == 0)
+	{
+		swap(ps->stack_b);
+		swap(ps->stack_a);
+	}
 	if (ft_strncmp(move, "pa", 3) == 0)
 		push(ps->stack_b, ps->stack_a);
 	if (ft_strncmp(move, "pb", 3) == 0)

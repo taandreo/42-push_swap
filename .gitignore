@@ -1,5 +1,7 @@
 libft/
 ignore/
+.vscode/
 *.o
 push_swap
 checker
+checker_Mac

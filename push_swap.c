@@ -6,26 +6,11 @@
 /*   By: tairribe <tairribe@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/15 19:29:31 by tairribe          #+#    #+#             */
-/*   Updated: 2023/08/16 02:55:44 by tairribe         ###   ########.fr       */
+/*   Updated: 2023/08/19 14:00:02 by tairribe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-t_push_swap	*init_push_swap(void)
-{
-	t_push_swap	*ps;
-
-	ps = ft_calloc(sizeof(t_push_swap), 1);
-	if (ps == NULL)
-		return (NULL);
-	ps->stack_a = ft_calloc(sizeof(t_dcll), 1);
-	ps->stack_b = ft_calloc(sizeof(t_dcll), 1);
-	ps->moves = NULL;
-	ps->moves_gt = NULL;
-	ps->words = NULL;
-	return (ps);
-}
 
 void	gt_markup(t_push_swap *ps)
 {

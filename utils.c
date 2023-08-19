@@ -6,7 +6,7 @@
 /*   By: tairribe <tairribe@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/22 20:57:01 by tairribe          #+#    #+#             */
-/*   Updated: 2023/08/16 02:49:48 by tairribe         ###   ########.fr       */
+/*   Updated: 2023/08/19 13:59:54 by tairribe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,21 @@ t_bool	is_str_int(char *str_nb)
 	if (nb < INT_MIN || nb > INT_MAX)
 		return (false);
 	return (true);
+}
+
+t_push_swap	*init_push_swap(void)
+{
+	t_push_swap	*ps;
+
+	ps = ft_calloc(sizeof(t_push_swap), 1);
+	if (ps == NULL)
+		return (NULL);
+	ps->stack_a = ft_calloc(sizeof(t_dcll), 1);
+	ps->stack_b = ft_calloc(sizeof(t_dcll), 1);
+	ps->moves = NULL;
+	ps->moves_gt = NULL;
+	ps->words = NULL;
+	return (ps);
 }
 
 void	free_and_exit(t_push_swap *ps, int code)

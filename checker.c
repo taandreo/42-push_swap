@@ -6,41 +6,87 @@
 /*   By: tairribe <tairribe@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/17 00:24:00 by tairribe          #+#    #+#             */
-/*   Updated: 2023/08/17 20:37:42 by tairribe         ###   ########.fr       */
+/*   Updated: 2023/08/19 15:20:57 by tairribe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-t_push_swap *init_push_swap(void)
+void	apply_move(t_push_swap *ps, char *m)
 {
-	t_push_swap *ps;
+	if (ft_strcmp(m, "ra") == 0)
+		move(ps, m);
+	else if (ft_strcmp(m, "rb") == 0)
+		move(ps, m);
+	else if (ft_strcmp(m, "rra") == 0)
+		move(ps, m);
+	else if (ft_strcmp(m, "rrb") == 0)
+		move(ps, m);
+	else if (ft_strcmp(m, "rr") == 0)
+		move(ps, m);
+	else if (ft_strcmp(m, "rrr") == 0)
+		move(ps, m);
+	else if (ft_strcmp(m, "sa") == 0)
+		move(ps, m);
+	else if (ft_strcmp(m, "sb") == 0)
+		move(ps, m);
+	else if (ft_strcmp(m, "pa") == 0)
+		move(ps, m);
+	else if (ft_strcmp(m, "pb") == 0)
+		move(ps, m);
+	else if (ft_strcmp(m, "ss") == 0)
+		move(ps, m);
+	else
+		error(ps);
+}
 
-	ps = ft_calloc(sizeof(t_push_swap), 1);
-	if (ps == NULL)
-		return (NULL);
-	ps->stack_a = ft_calloc(sizeof(t_dcll), 1);
-	ps->stack_b = ft_calloc(sizeof(t_dcll), 1);
-	ps->moves = NULL;
-	ps->moves_gt = NULL;
-	ps->words = NULL;
-	return (ps);
+void	read_moves(t_push_swap *ps)
+{
+	char	*line;
+	char	*move;
+
+	line = get_next_line(0);
+	while(line)
+	{
+		move = ft_strtrim(line, "\n");
+		free(line);
+		apply_move(ps, move);
+		line = get_next_line(0);
+	}
+}
+
+void	print_and_exit(t_push_swap *ps, char *m)
+{
+	ft_printf("%s\n", m);
+	free_and_exit(ps, 0);
+}
+
+void	check(t_push_swap *ps)
+{
+	t_node *node;
+
+	if (ps->stack_b != NULL)
+		print_and_exit(ps, "KO");
+	node = ps->stack_a->head;
+	while (true)
+	{
+		if (node->cont.nb > node->next->cont.nb)
+			print_and_exit(ps, "KO");
+		if (node == ps->stack_a->tail)
+			break ;
+		node = node->next;
+	}
+	print_and_exit(ps, "OK");
 }
 
 int main(int argc, char *argv[])
 {
 	t_push_swap *ps;
-	char 		*line;
 
 	if (argc < 2)
 		return (0);
 	ps = init_push_swap();
 	parse_argv(ps, argc, argv);
-	line = get_next_line(0);
-	while(line)
-	{
-		ft_printf("%s", line);
-		free(line);
-		line = get_next_line(0);
-	}
+	read_moves(ps);
+	check(ps);
 }

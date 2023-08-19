@@ -6,7 +6,7 @@
 /*   By: tairribe <tairribe@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/09 12:17:29 by tairribe          #+#    #+#             */
-/*   Updated: 2023/08/15 21:51:41 by tairribe         ###   ########.fr       */
+/*   Updated: 2023/08/17 23:49:05 by tairribe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,10 @@ void	swap(t_dcll	*stack)
 	t_node	*a;
 	t_node	*b;
 
+	if (stack->head == NULL)
+		return ;
+	if (stack->head == stack->head->next)
+		return ;
 	a = stack->head;
 	b = stack->head->next;
 	swap = a->cont;
