@@ -6,7 +6,7 @@
 /*   By: tairribe <tairribe@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/29 21:49:54 by tairribe          #+#    #+#             */
-/*   Updated: 2023/08/15 21:51:21 by tairribe         ###   ########.fr       */
+/*   Updated: 2023/08/20 17:05:20 by tairribe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ void	set_best_index_markup(t_dcll *stack)
 			stack->markup_head = node;
 			keep_a_max = keep_a;
 		}
-		if (keep_a == keep_a_max)
+		else if (keep_a == keep_a_max)
 		{
 			if (node->cont.index < stack->markup_head->cont.index)
 				stack->markup_head = node;
@@ -60,7 +60,7 @@ int	set_index_markup(t_node *start)
 			node->cont.keep_a = false;
 		node = node->next;
 	}
-	return (index - start->cont.index + 1);
+	return ((index - start->cont.index) + 1);
 }
 
 void	set_best_gt_markup(t_dcll *stack)
@@ -81,7 +81,7 @@ void	set_best_gt_markup(t_dcll *stack)
 			stack->markup_head = node;
 			keep_a_max = keep_a;
 		}
-		if (keep_a == keep_a_max)
+		else if (keep_a == keep_a_max)
 		{
 			if (node->cont.index < stack->markup_head->cont.index)
 				stack->markup_head = node;

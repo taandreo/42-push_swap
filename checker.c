@@ -6,7 +6,7 @@
 /*   By: tairribe <tairribe@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/17 00:24:00 by tairribe          #+#    #+#             */
-/*   Updated: 2023/08/19 19:00:51 by tairribe         ###   ########.fr       */
+/*   Updated: 2023/08/20 19:21:54 by tairribe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ void	read_moves(t_push_swap *ps)
 	char	*move;
 
 	line = get_next_line(0);
-	while(line)
+	while (line)
 	{
 		move = ft_strtrim(line, "\n");
 		free(line);
@@ -64,9 +64,8 @@ void	print_and_exit(t_push_swap *ps, char *m)
 
 void	check(t_push_swap *ps)
 {
-	t_node *node;
+	t_node	*node;
 
-	print_stacks(ps->stack_a, ps->stack_b);
 	if (ps->stack_b->head != NULL)
 		print_and_exit(ps, "KO");
 	node = ps->stack_a->head;
@@ -79,9 +78,9 @@ void	check(t_push_swap *ps)
 	print_and_exit(ps, "OK");
 }
 
-int main(int argc, char *argv[])
+int	main(int argc, char *argv[])
 {
-	t_push_swap *ps;
+	t_push_swap	*ps;
 
 	if (argc < 2)
 		return (0);

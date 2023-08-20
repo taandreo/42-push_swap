@@ -6,7 +6,7 @@
 /*   By: tairribe <tairribe@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/15 22:12:59 by tairribe          #+#    #+#             */
-/*   Updated: 2023/08/15 22:25:44 by tairribe         ###   ########.fr       */
+/*   Updated: 2023/08/20 18:11:54 by tairribe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,6 +83,6 @@ t_routes	*find_best_route(t_push_swap *ps, t_node *b_node)
 	if (ra + rrb < mv->moves)
 		set_routes(mv, 0, 1, ra + rrb);
 	if (rra + rb < mv->moves)
-		set_routes(mv, 1, 0, ra + rrb);
+		set_routes(mv, 1, 0, rra + rb);
 	return (mv);
 }
