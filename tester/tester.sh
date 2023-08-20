@@ -1,21 +1,23 @@
 #!/bin/bash
 
+AMOUNT=10
+SIZE=500
 MAX=0
 ITERATIONS=0
-LIMIT=700
-FILE=problem_100
+LIMIT=5500
+FILE="above_limit_for_$SIZE"
 SUM=0
 
-for i in {1..1000}
+for i in $(seq 1 $AMOUNT)
 do
-        export ARG="$(seq 1 100 | shuf -n 100)"
-        if ./push_swap $ARG | ./checker $ARG | grep -q KO
+        export ARG="$(seq 1 $SIZE | shuf -n $SIZE)"
+        if ../push_swap $ARG | ../checker_linux $ARG | grep -q KO
         then
             echo "Error!"
             echo $ARG
             break
         fi
-        NUMBER="$(./push_swap $ARG | wc -l | sed 's/ //g')"
+        NUMBER="$(../push_swap $ARG | wc -l | sed 's/ //g')"
         if [ "$NUMBER" -gt "$LIMIT" ]
             then
             echo $NUMBER >> $FILE
@@ -31,4 +33,4 @@ do
 done
 
 echo "AVG: $(($SUM / $ITERATIONS))"
-echo "MAX: " $MAX
+echo "MAX: $MAX"
